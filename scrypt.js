@@ -1,7 +1,8 @@
-let myLibrary = ["book1", "book2", "book3", "book4"];
+let myLibrary = [];
 
 function Book(book){
     myLibrary.push(book);
+    displayBooks(book);
 }
 
 function addBookToLibrary(){
@@ -11,10 +12,27 @@ function addBookToLibrary(){
     }
 }
 
-const books = document.getElementById("books");
 
-myLibrary.forEach((book) => {
-    const divElement = document.createElement('div');
-    divElement.textContent = book;
-    books.appendChild(divElement);
-});
+const books = document.getElementById("books");
+const newBookButton = document.getElementById("newBookButton");
+
+newBookButton.addEventListener('click', addBookToLibrary);
+
+//delete all displayed books in webpage
+function resetBooks(){
+    while(books.firstChild){
+        books.firstChild.remove();
+    }
+}
+
+function displayBooks(){   
+    let index = 0;
+    resetBooks();//remove all displayed books in webpage, prevent duplicates.
+    myLibrary.forEach((book) => {
+        const divElement = document.createElement('div');
+        divElement.textContent = book;
+        books.appendChild(divElement);
+        index++;
+    });
+    console.log(index); //debugin line
+}
