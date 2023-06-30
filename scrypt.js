@@ -25,14 +25,32 @@ function resetBooks(){
     }
 }
 
+function deleteBook(index){
+    myLibrary.splice(index, 1);
+    displayBooks();
+}
+
 function displayBooks(){   
     let index = 0;
-    resetBooks();//remove all displayed books in webpage, prevent duplicates.
+    resetBooks();//removes all displayed books in webpage, prevent duplicates.
     myLibrary.forEach((book) => {
         const divElement = document.createElement('div');
-        divElement.textContent = book;
+        divElement.style.display = 'grid';
         books.appendChild(divElement);
+        
+        const bookTitle = document.createElement('p');
+        bookTitle.textContent = "Title: " + book;
+        divElement.appendChild(bookTitle);
+
+        const deleteButton = document.createElement('button');
+        deleteButton.textContent = 'Delete';
+        deleteButton.setAttribute('class', 'deleteButton');
+        deleteButton.dataset.index = index; // setting dataset-index to the button
+        divElement.appendChild(deleteButton);
+
+        deleteButton.addEventListener('click', deleteBook.bind(this, deleteButton.dataset.index));
+
         index++;
     });
-    console.log(index); //debugin line
 }
+
