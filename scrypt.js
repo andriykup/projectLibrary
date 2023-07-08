@@ -1,14 +1,17 @@
 let myLibrary = [];
 
-function Book(book){
-    myLibrary.push(book);
-    displayBooks(book);
+class Book {
+    constructor(title) {
+        this.title = title;
+    }
 }
 
 function addBookToLibrary(){
-    let book = prompt("Please enter the name of the book");
-    if(book != null){
-        Book(book);
+    let title = prompt("Please enter the name of the book");
+    if(title != null){
+        const bookNew = new Book(title);
+        myLibrary.push(bookNew);
+        displayBooks(bookNew);
     }
 }
 
@@ -39,7 +42,7 @@ function displayBooks(){
         books.appendChild(divElement);
         
         const bookTitle = document.createElement('p');
-        bookTitle.textContent = "Title: " + book;
+        bookTitle.textContent = "Title: " + myLibrary[index].title;
         divElement.appendChild(bookTitle);
 
         const deleteButton = document.createElement('button');
