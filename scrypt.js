@@ -1,15 +1,21 @@
 let myLibrary = [];
 
 class Book {
-    constructor(title) {
+    constructor(title, author, pages, read) {
         this.title = title;
+        this.author = author;
+        this.pages = pages;
+        this.read = read;
     }
 }
 
 function addBookToLibrary(){
     let title = prompt("Please enter the name of the book");
-    if(title != null){
-        const bookNew = new Book(title);
+    let author = prompt("Please enter the name of the author");
+    let pages = prompt("Please enter the number of pages");
+    let read = confirm("Did you read the book?");
+    if(title != null && author != null && pages != null){
+        const bookNew = new Book(title, author, pages, read);
         myLibrary.push(bookNew);
         displayBooks(bookNew);
     }
@@ -42,8 +48,17 @@ function displayBooks(){
         books.appendChild(divElement);
         
         const bookTitle = document.createElement('p');
+        const bookAuthor = document.createElement('p');
+        const bookPages = document.createElement('p');
+        const bookRead = document.createElement('p');
         bookTitle.textContent = "Title: " + myLibrary[index].title;
+        bookAuthor.textContent = "Author: " + myLibrary[index].author;
+        bookPages.textContent = "Number of pages: " + myLibrary[index].pages;
+        bookRead.textContent = "Read: " + myLibrary[index].read;
         divElement.appendChild(bookTitle);
+        divElement.appendChild(bookAuthor);
+        divElement.appendChild(bookPages);
+        divElement.appendChild(bookRead);
 
         const deleteButton = document.createElement('button');
         deleteButton.textContent = 'Delete';
@@ -63,14 +78,8 @@ function displayBooks(){
 
 https://www.w3docs.com/snippets/javascript/how-to-create-a-popup-form-using-javascript.html
 
-4 - Add a “NEW BOOK” button that brings up a form allowing users to input the details 
-for the new book: author, title, number of pages, whether it’s been read and anything 
-else you might want. You will most likely encounter an issue where submitting your 
-form will not do what you expect it to do. That’s because the submit input tries to 
-send the data to a server by default. If you’ve done the bonus section for the 
-calculator assignment, you might be familiar with event.preventDefault();. 
-Read up on the event.preventDefault documentation again and see how you can solve 
-this issue!
+!!! create a form that allowing users to input the details,
+--- event.preventDefault();
 
 6 - Add a button on each book’s display to change its read status.
         1 - To facilitate this you will want to create the function that toggles a 

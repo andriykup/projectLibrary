@@ -19,6 +19,6 @@
     display: flex;
     justify-content: center;
     border: 1px solid black;
-    height: 100px;
+    height: auto;
     padding: 15px;
 }
