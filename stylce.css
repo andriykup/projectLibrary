@@ -2,6 +2,10 @@
     box-sizing: border-box;
 }
 
+p {
+    font-size: 1.2rem;
+}
+
 #header {display: flex;
     width: 100%;
     justify-content: center;
@@ -10,15 +14,43 @@
 
 #books {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
     margin: 50px 80px 50px 80px;
     gap: 20px;
 }
 
 #books div {
-    display: flex;
-    justify-content: center;
-    border: 1px solid black;
+    display: grid;
+    border-radius: 10px;
+    border: 2px solid blue;
     height: auto;
     padding: 15px;
+}
+
+#books p{
+    margin: 20px;
+}
+
+.deleteButton {
+    justify-self: end;
+}
+
+#newBookButton {
+    margin-left: 80px;
+}
+
+button {
+    border: none;
+    border-radius: 10px;
+    width: 100px;
+    height: 40px;
+    font-size: 1rem;
+    background-color: blue;
+    color: white;
+    font-weight: bold;
+}
+
+button:hover {
+    background-color: rgba(0, 0, 255, 0.575);
+    cursor: pointer;
 }

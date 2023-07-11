@@ -44,7 +44,6 @@ function displayBooks(){
     resetBooks();//removes all displayed books in webpage, prevent duplicates.
     myLibrary.forEach((book) => {
         const divElement = document.createElement('div');
-        divElement.style.display = 'grid';
         books.appendChild(divElement);
         
         const bookTitle = document.createElement('p');
